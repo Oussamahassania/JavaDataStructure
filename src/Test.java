@@ -81,11 +81,53 @@ public class Test {
        */
 
         int []array={9,8,2,3,1,4,5,7,0,6};
-        bubbleSort(array);
+        insertionSort(array);
         for (int i : array) {
             System.out.print(i);
         }
     }
+//Insertion sort is a simple sorting algorithm that builds
+// a final sorted array (or list) one item at a time.
+// It operates by taking elements from the unsorted part of the list
+// and inserting them into their correct position within the already sorted portion.
+// Quadratique time O(n**2)
+//Small data set = decent
+// Large data set = Bad
+// less steps than bubble sort
+// best case in O(n) compared to selection sort O(n**2)
+
+    private static void insertionSort(int[] array) {
+        for (int i=1; i<array.length; i++) {
+            int temp = array[i];
+            int j= i-1;
+            while (j>=0 && array[j] > temp) {
+                array[j+1] = array[j];
+                j--;
+            }
+            array[j+1] = temp;
+        }
+    }
+//Selection sort is an in-place comparison sorting algorithm that works by repeatedly finding
+// the minimum (or maximum) element from the unsorted part
+// of a list and putting it at the beginning of the sorted part
+// Quadratique time O(n**2)
+//Small data set = Okay
+// Large data set = Bad
+  /*
+    private static void selectionSort(int[] array) {
+        for (int i = 0; i < array.length-1; i++) {
+            int min=i;
+            for (int j=i+1;j<array.length;j++) {
+                if (array[min]>array[j]) {
+                    min=j;
+                }
+            }
+            int temp=array[i];
+            array[i]=array[min];
+            array[min]=temp;
+        }
+    }
+   */
     //Bubble sort is a simple sorting algorithm that repeatedly steps through a list,
     // compares adjacent elements, and swaps them if they are in the wrong order.
     // The algorithm gets its name because smaller or larger elements "bubble" to the top of the list,
@@ -93,7 +135,7 @@ public class Test {
     //Quadratique time O(n**2)
     // Small data set = Okay-ish
     // large data set = BAD (plz don't)
-
+    /*
     private static void bubbleSort(int[] array) {
         for (int i=0;i<array.length-1;i++) {
             for (int j=0;j<array.length-1-i;j++) {
@@ -105,6 +147,7 @@ public class Test {
             }
         }
     }
+     */
     /*
     //========================================================================================================
         //Interpolation Search is an improved searching algorithm for ordered arrays that estimates the position of the target element based on its value.
