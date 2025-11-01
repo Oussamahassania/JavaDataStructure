@@ -80,12 +80,25 @@ public class Test {
 
        */
 
-        int []array={9,8,2,3,1,4,5,7,0,6};
-        insertionSort(array);
-        for (int i : array) {
-            System.out.print(i);
-        }
+
     }
+
+
+
+//Recursion : Recursion in Java is a programming technique where a method calls itself to solve a problem.
+// This technique is particularly useful for problems that can be broken down into smaller, self-similar subproblems.
+  //Advantages
+    //easier to write/read
+    //easier to debug
+  //Disadvantages
+   //sometimes slower
+   //use more memory
+    /*
+private static int factoriel(int num) {
+    if (num<1)return 1;
+    return num*factoriel(num-1);
+}
+     */
 //Insertion sort is a simple sorting algorithm that builds
 // a final sorted array (or list) one item at a time.
 // It operates by taking elements from the unsorted part of the list
@@ -95,7 +108,7 @@ public class Test {
 // Large data set = Bad
 // less steps than bubble sort
 // best case in O(n) compared to selection sort O(n**2)
-
+/*
     private static void insertionSort(int[] array) {
         for (int i=1; i<array.length; i++) {
             int temp = array[i];
@@ -107,6 +120,7 @@ public class Test {
             array[j+1] = temp;
         }
     }
+ */
 //Selection sort is an in-place comparison sorting algorithm that works by repeatedly finding
 // the minimum (or maximum) element from the unsorted part
 // of a list and putting it at the beginning of the sorted part
