@@ -82,6 +82,7 @@ public class Test {
          *
          * space complexity O(log(n)) due to recursion
          */
+
         Hashtable<String,String>table = new Hashtable<>(10);
         table.put("100","oussama");
         table.put("123","mohamed");
@@ -91,6 +92,34 @@ public class Test {
         for (String key : table.keySet()){
             System.out.println(key.hashCode() % 21 +"\t"+key +"\t"+table.get(key));
         }
+
+        /* ============================================================
+         *                        Adjacency matrix
+         * ============================================================
+         *
+         * An array to store 1/0 to represent edges
+         *      # of rows = # of unique nodes
+         *      # of columns = # of unique nodes
+         * runtime complexity to check a edge: O(1)
+         * space complexity o(V**2)
+         */
+
+        Graph graph = new Graph(5);
+        graph.addNode(new Node('A'));
+        graph.addNode(new Node('B'));
+        graph.addNode(new Node('C'));
+        graph.addNode(new Node('D'));
+        graph.addNode(new Node('E'));
+
+        graph.addEdge(0,1);
+        graph.addEdge(1,2);
+        graph.addEdge(2,3);
+        graph.addEdge(2,4);
+        graph.addEdge(4,0);
+        graph.addEdge(4,2);
+
+        graph.print();
+        System.out.println(graph.checkEdge(0,2));
     }
     /* ============================================================
      *                   Quick sort
