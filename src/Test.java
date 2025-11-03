@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Hashtable;
 
 /**
  * A demonstration class covering multiple data structure and algorithm examples:
@@ -62,12 +63,76 @@ public class Test {
          * else
          *     System.out.println("Element not found");
          */
-        int []array={8,9,7,6,5,4,2,3,1};
-        mergeSort(array);
-        for (int i=0;i<array.length;i++) {
-            System.out.print(array[i]+" ");
+        /* ============================================================
+         *                        Hash table
+         * ============================================================
+         *
+         * A hashtable is a data structure that stores key-value pairs and uses a hash function to efficiently map keys to their corresponding values.
+         * This allows for very fast searching, adding, and deleting of data, making it a preferred alternative to arrays or linked lists for many tasks.
+         *  A hash function takes a key, computes a hash code, and uses it to determine the index in an array where the value is stored.
+         * hashing = takes a key and computes an integer (formula will vary based on key & data type)
+         *   In a Hashtable, we use the hash % capacity to calculate an index number
+         *                   key.hashCode() % capacity = index
+         * bucket = an indexed storage location for one or more Entries
+         *          can store multiple Entries in case of a collision (linked similarly to a LinkedList)
+         * collision = hash function generates the same index for more than one key
+         *       less collisions = more efficiency
+         * Runtime complexity: Best Case O(1)
+         *                     Worst Case O(n)
+         *
+         * space complexity O(log(n)) due to recursion
+         */
+        Hashtable<String,String>table = new Hashtable<>(10);
+        table.put("100","oussama");
+        table.put("123","mohamed");
+        table.put("321","aziz");
+        table.put("555","ayoub");
+        table.put("777","azzedine");
+        for (String key : table.keySet()){
+            System.out.println(key.hashCode() % 21 +"\t"+key +"\t"+table.get(key));
         }
     }
+    /* ============================================================
+     *                   Quick sort
+     * ============================================================
+     *
+     * Quicksort is a widely used, efficient,
+     *  comparison-based sorting algorithm that employs a divide-and-conquer strategy.
+     * moves smaller elements to the left of the pivot
+     * recursively divide the array in 2 partitions
+     *
+     * run-time complexity Best case O(n log(n))
+     *                     average case O(n log(n))
+     *                     worst case O(n**2) if already sorted
+     *
+     * space complexity O(log(n)) due to recursion
+     */
+    private static void quickSort(int[] array, int start, int end) {
+        if(end<=start) return;
+        int pivot = partition(array,start,end);
+        quickSort(array,start,pivot-1);
+        quickSort(array,pivot+1,end);
+    }
+
+    private static int partition(int[] array, int start, int end) {
+        int pivot = array[end];
+        int i=start-1;
+        for (int j=start; j<=end-1; j++) {
+            if(array[j]<pivot){
+                i++;
+                int temp=array[i];
+                array[i]=array[j];
+                array[j]=temp;
+            }
+        }
+        i++;
+        int temp=array[i];
+        array[i]=array[end];
+        array[end]=temp;
+        return i;
+    }
+
+
     /* ============================================================
      *                   Merge sort
      * ============================================================
